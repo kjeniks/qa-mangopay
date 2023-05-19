@@ -15,6 +15,10 @@ For rest of the installations move to project folder in command prompt and type
 
 which will install Cypress and other supporting tools
 
+### CI/CD
+
+To run the test on Github Actions you can use the End-to-end workflow, where you can find results for each new public commit or you can run manually with avaliable to download artifacts when tests fails.
+
 ### Run Tests
 
 To run series of tests in interactive mode use following command
