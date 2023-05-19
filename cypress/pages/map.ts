@@ -32,6 +32,13 @@ export function searchByGPS(searchData) {
   cy.wait('@mapLoaded', { timeout: 30000 });
 }
 
+export function emptySearch() {
+  cy.get(el.searchInput).clear().get(el.searchButton).click();
+  cy.url().should('include', '/maps/');
+  cy.get(el.leftPanel).should('not.exist');
+  cy.get(el.leftList).find('button').should('be.disabled');
+}
+
 export function checkHeadlineText(headline) {
   cy.get(el.leftPanel).within(() => {
     cy.get(el.headlineText).contains(headline).should('be.visible');

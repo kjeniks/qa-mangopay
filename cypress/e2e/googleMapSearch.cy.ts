@@ -74,4 +74,9 @@ describe('Google Map tests', () => {
       );
     });
   });
+
+  it('AC7: Try to submit serach without data', () => {
+    enterToGoogleMap();
+    map.emptySearch();
+  });
 });
