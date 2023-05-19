@@ -1,4 +1,6 @@
+import { getGpsLocation } from '@pages/gps';
 import * as map from '@pages/map';
+import DmsCoordinates, { parseDms } from 'dms-conversion';
 
 const cities = ['Paris', 'London', 'Munich', 'Prague', 'Boston'];
 const nokEnterdata = 'sldjba-axxch';
@@ -55,5 +57,21 @@ describe('Google Map tests', () => {
     enterToGoogleMap();
     map.search(nokEnterdata);
     map.searchDidNotFind();
+  });
+
+  it('AC6: Search random GPS Location', () => {
+    getGpsLocation().then((resp) => {
+      expect(resp.status).equal(200);
+      enterToGoogleMap();
+      map.searchByGPS(
+        resp.body.split('\n')[0].substring(0, 8) +
+          ' ' +
+          resp.body.split('\n')[1].substring(0, 8)
+      );
+      map.checkGPSResult(
+        resp.body.split('\n')[0].substring(0, 8),
+        resp.body.split('\n')[1].substring(0, 8)
+      );
+    });
   });
 });

@@ -11,6 +11,7 @@ const el = {
   recentButtonNav: 'button[jsaction="navigationrail.recent"]',
   leftList: 'ul[role="list"]',
   historyTitle: '.fontHeadlineSmall',
+  gpsSearchResult: '#omnibox-container',
 };
 
 export function firstGoogleEnterCheck() {
@@ -22,15 +23,24 @@ export function firstGoogleEnterCheck() {
 }
 
 export function search(searchData) {
+  searchByGPS(searchData);
+  cy.url().should('include', `${searchData}`);
+}
+
+export function searchByGPS(searchData) {
   cy.get(el.searchInput).clear().type(searchData).get(el.searchButton).click();
   cy.wait('@mapLoaded', { timeout: 30000 });
-  cy.url().should('include', `${searchData}`);
 }
 
 export function checkHeadlineText(headline) {
   cy.get(el.leftPanel).within(() => {
     cy.get(el.headlineText).contains(headline).should('be.visible');
   });
+}
+
+export function checkGPSResult(long, latt) {
+  cy.get('h2').contains(long).should('be.visible');
+  cy.get('h2').contains(latt).should('be.visible');
 }
 
 export function checkDirection(searchData) {
