@@ -1,0 +1,6 @@
+node_modules
+.DS_Store
+
+cypress/screenshots
+cypress/fixtures
+cypress/logs
