@@ -12,6 +12,7 @@ const el = {
   leftList: 'ul[role="list"]',
   historyTitle: '.fontHeadlineSmall',
   gpsSearchResult: '#omnibox-container',
+  savedButton: 'button[jsaction="navigationrail.saved"]',
 };
 
 export function firstGoogleEnterCheck() {
@@ -28,6 +29,7 @@ export function search(searchData) {
 }
 
 export function searchByGPS(searchData) {
+  cy.get(el.savedButton).should('be.visible');
   cy.get(el.searchInput).clear().type(searchData).get(el.searchButton).click();
   cy.wait('@mapLoaded', { timeout: 30000 });
 }

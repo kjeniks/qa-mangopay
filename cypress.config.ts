@@ -3,8 +3,8 @@ import { defineConfig } from 'cypress';
 export default defineConfig({
   defaultCommandTimeout: 15000,
   requestTimeout: 15000,
-  viewportHeight: 1024,
-  viewportWidth: 1280,
+  viewportHeight: 1080,
+  viewportWidth: 1920,
   chromeWebSecurity: false,
   watchForFileChanges: false,
   videoUploadOnPasses: false,
