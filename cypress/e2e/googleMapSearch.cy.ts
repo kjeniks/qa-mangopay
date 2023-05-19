@@ -1,6 +1,5 @@
 import { getGpsLocation } from '@pages/gps';
 import * as map from '@pages/map';
-import DmsCoordinates, { parseDms } from 'dms-conversion';
 
 const cities = ['Paris', 'London', 'Munich', 'Prague', 'Boston'];
 const nokEnterdata = 'sldjba-axxch';
