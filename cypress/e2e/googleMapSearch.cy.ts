@@ -1,7 +1,7 @@
 import * as map from '@pages/map';
 
-const cities = ['Paris', 'London', 'Dallas', 'Prague', 'Boston'];
-const nokEnterdata = 'sldjbach';
+const cities = ['Paris', 'London', 'Munich', 'Prague', 'Boston'];
+const nokEnterdata = 'sldjba-axxch';
 let citiesCheck = [];
 
 function enterToGoogleMap() {

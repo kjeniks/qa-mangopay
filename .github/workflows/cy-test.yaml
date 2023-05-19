@@ -10,3 +10,15 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-screenshots-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/cypress/screenshots/**
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/cypress/videos/**
+          if-no-files-found: ignore
